@@ -1,0 +1,31 @@
+Employer: valve n co
+
+Reconissaince<>
+
+# Server_name = "VALVE"
+# Blue_team = minimal
+# Vulnerabilites = escalation of privlage, brute force, port sniffing
+
+# Valve n co, is a texas based manufacturing company with a minimal blue_team mainly focused on defending some company secrets.
+
+Contract Limits<>
+
+# Test should be limited to within reasonable bounds
+# Test should not interfere with other customers
+# Test should not expose unnessasery info
+# Test should be carried out within reasonable hours
+
+Payment<>
+
+# Minor vuln -> 50$
+# Minor to medium vuln -> 300$
+# medium vuln -> 500$
+# medium to high vuln -> 750$
+#high vuln -> 1500$
+#company breach 15000$
+
+## Expect at most weeks wait for our blue team to verifier Vulnerabilites
+
+Contact<>
+# contact valve n co cyberSecurity at blues@gmail.com
+# 915-867-9999
