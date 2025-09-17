@@ -1,43 +1,22 @@
+import java.util.Scanner;
+import java.io.*;
 public class SSH {
-    menu menu = new menu();
-    private String current_dir;
+
+    private String current_ip = menu.ip_tools.getIp();
+    private String band_dir = "globals/Band.dat";
+    private String router_dir = "globals/router.java";
+    private String IP_list = "globals/IPs.dat";
+    private String pair = "ROUTER";
+    menu MENU = new menu();
     public void main(){
-        while(true){
-            int choice = menu.choices("SSH/TERMINAL EMULATOR", new String[]{ "CAT","MV","RM","LS","cd","back"});
-            if(choice == 0){
-                cat("dir");
-            } else if (choice == 1){
-                mv("dir","dir");
-            } else if (choice == 2){
-                rm("dir");
-            } else if (choice == 3){
-                ls(null);
-            } else if(choice == 4){
-                cd(null);
-            } else if(choice == 5){
-                break;
-            }
+        int choice = MENU.choices("SSH", new String[]{"coms"});
+    }
+    public String coms(String ip, String name, String in){
+        if (ip == null){
+ 
+        } else if (name == null){
+
         }
+        return("hi");
     }
-    public void cat(String dir){
-
-    }
-    public void mv(String dir_start, String dir_end){
-
-    }
-    public void ls(String dir){
-        if(dir == null){
-            //ls current directory files
-        }
-    }
-    public void rm(String dir){
-
-    }
-    public void cd(String dir){
-        //change directory
-    }
-    //ls
-    //cat
-    //mv
-    //ssh
 }

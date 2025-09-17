@@ -7,10 +7,10 @@ public class menu {
     // one scanner for the whole program (DO NOT REMOVE)
     static Scanner scan = new Scanner(System.in);
 
-    IP_RED ip_tools;
+    static IP_RED ip_tools;
     tools tools;
-    SSH kitty;
-
+    Terminal kitty;
+    SSH ssh_tool;
     /**
      * Presents a numbered list of options and returns a valid index.
      * Keeps prompting until a valid integer in range is entered.
@@ -59,10 +59,11 @@ public class menu {
                     if (tools == null) tools = new tools();
                     tools.main();
                 } else if (choice == 2) {
-                    if (kitty == null) kitty = new SSH();
-                    kitty.main();
+                    if (ssh_tool == null) ssh_tool = new SSH();
+                    ssh_tool.main();
                 } else if (choice == 3) {
-
+                    if (kitty == null) kitty = new Terminal();
+                    kitty.main();
                 } else if (choice == 4) {
                     running = false; //end loop
                     return(4); //exit return code
@@ -99,7 +100,4 @@ public class menu {
         return scan.nextLine();
     }
 
-    public void ssh(String ip, String pass) {
-        // placeholder for SSH auth logic
-    }
 }
