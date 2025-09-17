@@ -7,7 +7,7 @@ public class menu {
     // one scanner for the whole program (DO NOT REMOVE)
     static Scanner scan = new Scanner(System.in);
 
-    IP ip_tools;
+    IP_RED ip_tools;
     tools tools;
     SSH kitty;
 
@@ -45,7 +45,7 @@ public class menu {
      * Main menu loop. Returns when user chooses "exit".
      */
     public int main() {
-        if (ip_tools == null) ip_tools = new IP();
+        if (ip_tools == null) ip_tools = new IP_RED();
         boolean running = true;
 
         while (running) {

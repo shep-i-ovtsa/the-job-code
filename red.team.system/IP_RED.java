@@ -1,4 +1,4 @@
-public class IP {
+public class IP_RED {
     private menu menu = new menu();
 
     private String ip = "192.255.255.1";
