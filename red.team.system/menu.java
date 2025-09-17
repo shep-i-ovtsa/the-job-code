@@ -54,7 +54,7 @@ public class menu {
 
             try {
                 if (choice == 0) {
-                    ip_tools.mainn();
+                    ip_tools.main();
                 } else if (choice == 1) {
                     if (tools == null) tools = new tools();
                     tools.main();
@@ -62,7 +62,7 @@ public class menu {
                     if (kitty == null) kitty = new SSH();
                     kitty.main();
                 } else if (choice == 3) {
-                    print("terminal not implemented (returning to main).");
+
                 } else if (choice == 4) {
                     running = false; //end loop
                     return(4); //exit return code
