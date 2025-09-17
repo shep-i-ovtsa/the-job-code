@@ -79,7 +79,7 @@ public class menu {
             }
             
         }
-        return 68; //default return code
+        return 67; //default return code xd
     }
 
     public void clear() {

@@ -3,3 +3,7 @@ public class blue_team {
         System.out.println("whoah");
     }
 }
+//logs
+//password changes
+//full valve-n-co acess
+//ip-tracker
