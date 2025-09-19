@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
         "red.team.system",
-        "blue.team.system"
+        "blue.team.system",
+        "valve-n-co"
     ]
 }

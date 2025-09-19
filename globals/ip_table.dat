@@ -1,24 +1,18 @@
 RED
 195.255.255.1/20;
-@t0talliL3gal
 
 BLUE
 198.133.126.124/24;
-@w3r0le
 
 ROUTER
 190.133.126;
-@passwrd
+
 
 VALVE
 87.133.126.100/220;
 87.133.126.100/88;
 87.133.126.100/32;
 87.133.126.100/22;
-@va1v3
 
 VALVE-WEB
 87.133.126.110;
-@valv3
-
-//this is just for the respective systems to set their passwords. Plus it makes it easy to make changes.
