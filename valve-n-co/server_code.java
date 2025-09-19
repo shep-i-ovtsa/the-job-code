@@ -1,10 +1,17 @@
 import java.util.Scanner;
 import java.io.*;
-public class server_code{
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+public class server_code{ //reminder to add port and IP functionality
     private boolean unlocked = false;
-    private String secret = "our super secret info #1: we're actually evil mr munchkin mans #2: credit card1 #3: credit card2 #4: credit card3";
+    private SecretKey secret_key;
     private String[] list = {"secret"};
-    private String[] list2 = {secret};
+    private String[] list2 = {};
     private void main() throws FileNotFoundException{
         System.out.println(get_info("secret","va1v3"));
     }
@@ -31,7 +38,7 @@ public class server_code{
         return(null);
     }
 
-    private Scanner scan; // not used globally anymore
+    private Scanner scan;
     private String target_pass(String target) throws FileNotFoundException {
         if (target == null) return "NOT_FOUND";
         File f = new File("globals/IPs.dat");
@@ -56,4 +63,47 @@ public class server_code{
         }
         return "NOT_FOUND";
     }
+    /*private String encrypter(){
+        File input = new File("globals/IPs.dat");
+        if (!input.exists()) {
+            return("globals not found ");
+        }
+
+        //ensure output dir
+        File outputDir = new File("valve-n-co");
+        if (!outputDir.exists()) {
+            outputDir.mkdirs();
+        }
+
+        try (Scanner s = new Scanner(input);
+             BufferedWriter writer = new BufferedWriter(new FileWriter("valve-n-co/super-secret-info.dat"))) {
+
+            boolean found = false;
+
+            while (s.hasNextLine()) {
+                String read = s.nextLine();
+
+                if (!found) {
+                    if (read.contains("#")) {
+                        found = true;
+                    }
+                } else {
+                    if (read.contains("#")) {
+                        writer.write(read);
+                        writer.newLine();
+                        menu.prompt("saved: " + read);
+                    } else {
+                        // if line dosent contain a semicolon-> stop
+                        break;
+                    }
+                }
+            }
+            return("success");
+
+        } catch (IOException e) {
+            return("error");
+
+        }
+    }*/ //wanted to add cryptology to valve-n-co servers, but it was just easier to have them in a seperate directory
+
 }
