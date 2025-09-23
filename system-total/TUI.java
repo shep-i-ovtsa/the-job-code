@@ -1,28 +1,14 @@
-//import blue team classes, red team classes, valve n co classes
 import java.util.InputMismatchException;
 import java.util.Scanner;
-public class main {
-    static Scanner scan = new Scanner(System.in);
-   
-    public static void main(String[] args) {
-        while(true){
-            //initiates the tui for red team and blue team on choice
-            int choice = choices("MAIN-BRANCH", new String[]{"RED-TEAM","BLUE-TEAM","exit"});
-        
-            if (choice == 0){
-                //red-team.main();
-            } else if (choice == 1){
-                //blue-team.main();
-            } else if (choice == 2){
-                return;
-            }
-        }
-        
-    }
-    public static int choices(String Title, String[] options) {
+
+public class TUI {
+    private static final Scanner scan = new Scanner(System.in);
+
+    // Menu choice helper
+    public static int choices(String title, String[] options) {
         while (true) {
             clear();
-            print("<" + Title + ">");
+            print("<" + title + ">");
             for (int i = 0; i < options.length; i++) {
                 print("(" + i + "): " + options[i]);
             }
@@ -30,29 +16,32 @@ public class main {
             System.out.print("choice: ");
             try {
                 int choice = scan.nextInt();
-                scan.nextLine(); 
-                if (choice >= 0 && choice < options.length) {
+                scan.nextLine();
+                if (choice >= 0 && choice < options.length || choice == 55 || choice == 67) {
                     return choice;
                 } else {
                     print("Invalid choice: " + choice + " (out of range). Press enter to retry.");
                     scan.nextLine();
                 }
             } catch (InputMismatchException ime) {
-                scan.nextLine(); //eat the bad input
+                scan.nextLine(); // eat bad input
                 print("bad input, try again");
                 scan.nextLine();
             }
         }
     }
+
+    // Clears the terminal
     public static void clear() {
         System.out.println("\033[H\033[2J");
+        System.out.flush();
     }
 
     public static void print(String input) {
         System.out.println(input);
     }
 
-    public static void print(String input, int a) {
+    public static void printInline(String input) {
         System.out.print(input);
     }
 
@@ -60,8 +49,4 @@ public class main {
         System.out.print(message + ": ");
         return scan.nextLine();
     }
-
 }
-
-
-

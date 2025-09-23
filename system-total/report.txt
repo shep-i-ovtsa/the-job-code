@@ -4,7 +4,7 @@ Reconissaince<>
 
 # Server_name = "VALVE"
 # Blue_team = minimal
-# Vulnerabilites = escalation of privlage, brute force, port sniffing
+# Vulnerabilites = escalation of privlage, brute force, port sniffing, weak passwords, undefended network
 
 # Valve n co, is a texas based manufacturing company with a minimal blue_team mainly focused on defending some company secrets.
 

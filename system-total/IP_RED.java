@@ -1,5 +1,5 @@
 public class IP_RED {
-    private menu menu = new menu();
+    private TUI menu = new TUI();
 
     private String ip = "192.255.255.1";
     
@@ -13,23 +13,23 @@ public class IP_RED {
         in = in.trim();
         if (ValidIPv4(in)) {
             ip = in;
-            menu.prompt("IP changed to: " + ip);
+            TUI.prompt("IP changed to: " + ip);
         } else {
-            menu.prompt("Invalid format, example: 192.168.1.1");
+            TUI.prompt("Invalid format, example: 192.168.1.1");
         }
     }
 
     public void change_ports(String in) {
         if (in == null) {
-            menu.prompt("No ports given");
+            TUI.prompt("No ports given");
             return;
         }
         in = in.trim();
         if (ValidPortsString(in)) {
             ports = in;
-            menu.prompt("Ports changed to: " + ports);
+            TUI.prompt("Ports changed to: " + ports);
         } else {
-            menu.prompt("Invalid port format, example: /24,/80 or /22,/220");
+            TUI.prompt("Invalid port format, example: /24,/80 or /22,/220");
         }
     }
 
@@ -69,13 +69,13 @@ public class IP_RED {
     public void main() {
         boolean running = true;
         while (running) {
-            int choice = menu.choices("IP", new String[]{"change_ip", "change_ports", "view", "exit"});
+            int choice = TUI.choices("IP", new String[]{"change_ip", "change_ports", "view", "exit"});
             if (choice == 0) {
-                change_ip(menu.prompt("enter new ip"));
+                change_ip(TUI.prompt("enter new ip"));
             } else if (choice == 1) {
-                change_ports(menu.prompt("enter new ports EX: /port,/port2"));
+                change_ports(TUI.prompt("enter new ports EX: /port,/port2"));
             } else if (choice == 2) {
-                menu.prompt("ip: " + ip + " | ports: " + ports);
+                TUI.prompt("ip: " + ip + " | ports: " + ports);
             } else { 
                 running = false;
             }

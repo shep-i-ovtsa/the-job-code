@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.io.*;
 
-public class tools {
+public class Tools {
 
     static final char[] list = {
             'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p',
@@ -15,34 +15,9 @@ public class tools {
             '1','2','3','4','5','6','7','8','9','0'
     };
 
-    menu menu = new menu();
-    Scanner scan; // not used globally anymore
-    String pass = "valve";
-    public String target_pass(String target) throws FileNotFoundException {
-        if (target == null) return "NOT_FOUND";
-        File f = new File("globals/IPs.dat");
-        if (!f.exists()) {
-            return "NOT_FOUND";
-        }
-
-        try (Scanner s = new Scanner(f)) {
-            boolean sniff = false;
-            while (s.hasNextLine()) {
-                String current = s.nextLine();
-                if (!sniff) {
-                    if (current.equals(target)) {
-                        sniff = true;
-                    }
-                } else {
-                    if (current.contains("@")) {
-                        return current.replace("@", "");
-                    }
-                }
-            }
-        }
-        return "NOT_FOUND";
-    }
-
+    TUI menu = new TUI();
+    
+    Scanner scan; 
     /**
     #passwords have an @ 
     #ip/port have a semicolon
@@ -50,13 +25,13 @@ public class tools {
      */
     public void sniffer(String in) {
         if (in == null) {
-            menu.prompt("No target");
+            TUI.prompt("No target");
             return;
         }
 
         File input = new File("globals/IPs.dat");
         if (!input.exists()) {
-            menu.prompt("globals not found ");
+            TUI.prompt("globals not found ");
             return;
         }
 
@@ -82,7 +57,7 @@ public class tools {
                     if (read.contains(";")) {
                         writer.write(read);
                         writer.newLine();
-                        menu.prompt("saved: " + read);
+                        TUI.prompt("saved: " + read);
                     } else {
                         // if line dosent contain a semicolon-> stop
                         break;
@@ -150,21 +125,25 @@ public class tools {
         return res == null ? "NOT_FOUND" : res;
     }
 
+    router route = new router();
+
     public void main() throws InterruptedException, FileNotFoundException {
-        int choice = menu.choices("TOOLS", new String[]{"sniff", "Brute_force", "back"});
+        route.init();
+        int choice = TUI.choices("TOOLS", new String[]{"sniff", "Brute_force", "back"});
         if (choice == 0) {
-            sniffer(menu.prompt("ENTER TARGET NAME"));
+            sniffer(TUI.prompt("ENTER TARGET NAME"));
         } else if (choice == 1) {
-            String targetName = menu.prompt("ENTER TARGET NAME");
-            String lookup = target_pass(targetName);
+            String targetName = TUI.prompt("ENTER TARGET NAME");
+            String lookup = route.get_pass(targetName);
             if ("NOT_FOUND".equals(lookup)) {
-                menu.prompt("target_pass returned NOT_FOUND");
+                TUI.prompt("target_pass returned NOT_FOUND");
             } else {
                 String bruteRes = brute(lookup);
-                menu.prompt(bruteRes);
+                TUI.prompt(bruteRes);
             }
         } else if (choice == 55) {
-            menu.prompt(target_pass(menu.prompt("ENTER TARGET NAME")));
+            String target =(TUI.prompt("ENTER TARGET NAME"));
+            TUI.prompt(route.get_pass(target));
         }
     }
 }

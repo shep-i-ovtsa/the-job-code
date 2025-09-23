@@ -1,8 +1,6 @@
 {
     "java.project.sourcePaths": [
-        "valve-n-co",
-        "red.team.system",
-        "blue.team.system",
-        "globals"
+        "globals",
+        "system-total"
     ]
 }
