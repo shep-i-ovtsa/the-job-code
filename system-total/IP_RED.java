@@ -1,35 +1,35 @@
 public class IP_RED {
     private TUI menu = new TUI();
 
-    private String ip = "192.255.255.1";
+    public String ip = "192.255.255.1";
     
-    private String ports = "/24,/88,/220";
+    public String ports = "";
 
-    public void change_ip(String in) {
+    public void change_ip(String in, boolean min) {
         if (in == null) {
-            menu.prompt("No IP entered.");
+            if(!min)menu.prompt("No IP entered.");
             return;
         }
         in = in.trim();
         if (ValidIPv4(in)) {
             ip = in;
-            TUI.prompt("IP changed to: " + ip);
+            if(!min)TUI.prompt("IP changed to: " + ip);
         } else {
-            TUI.prompt("Invalid format, example: 192.168.1.1");
+            if(!min)TUI.prompt("Invalid format, example: 192.168.1.1");
         }
     }
 
-    public void change_ports(String in) {
+    public void change_ports(String in, boolean min) {
         if (in == null) {
-            TUI.prompt("No ports given");
+            if(!min)TUI.prompt("No ports given");
             return;
         }
         in = in.trim();
         if (ValidPortsString(in)) {
             ports = in;
-            TUI.prompt("Ports changed to: " + ports);
+            if(!min)TUI.prompt("Ports changed to: " + ports);
         } else {
-            TUI.prompt("Invalid port format, example: /24,/80 or /22,/220");
+            if(!min)TUI.prompt("Invalid port format, example: /24,/80 or /22,/220");
         }
     }
 
@@ -71,9 +71,9 @@ public class IP_RED {
         while (running) {
             int choice = TUI.choices("IP", new String[]{"change_ip", "change_ports", "view", "exit"});
             if (choice == 0) {
-                change_ip(TUI.prompt("enter new ip"));
+                change_ip(TUI.prompt("enter new ip"),false);
             } else if (choice == 1) {
-                change_ports(TUI.prompt("enter new ports EX: /port,/port2"));
+                change_ports(TUI.prompt("enter new ports EX: /port,/port2"),false);
             } else if (choice == 2) {
                 TUI.prompt("ip: " + ip + " | ports: " + ports);
             } else { 
@@ -82,7 +82,7 @@ public class IP_RED {
         }
     }
     public String getIp() {
-    return ip;
+        return ip;
  }
 
 }

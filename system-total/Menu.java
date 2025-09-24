@@ -1,13 +1,13 @@
 import java.io.FileNotFoundException;
 
 public class Menu {
-    String signed = "RED";
+    String signed = "";
 
     static IP_RED ip_tools;
     Tools tools;
     Terminal kitty;
 
-    public int main() {
+    public int main(String usr) {
         if (ip_tools == null) ip_tools = new IP_RED();
         boolean running = true;
 

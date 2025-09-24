@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class TUI {
     private static final Scanner scan = new Scanner(System.in);
-
+    
     // Menu choice helper
     public static int choices(String title, String[] options) {
         while (true) {

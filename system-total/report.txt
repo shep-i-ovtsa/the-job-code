@@ -2,11 +2,11 @@ Employer: valve n co
 
 Reconissaince<>
 
-# Server_name = "VALVE"
+# Server_name = "VALVE_SERVER"
 # Blue_team = minimal
-# Vulnerabilites = escalation of privlage, brute force, port sniffing, weak passwords, undefended network
+# Vulnerabilites = escalation of privlage, brute force, port sniffing, weak passwords, undefended network, etc
 
-# Valve n co, is a texas based manufacturing company with a minimal blue_team mainly focused on defending some company secrets.
+# Valve n co, is a texas based manufacturing company with a minimal blue_team mainly focused on defending some elusive company secrets.
 
 Contract Limits<>
 

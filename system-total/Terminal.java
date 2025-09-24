@@ -50,7 +50,7 @@ public class Terminal {
         return optionArray[idx];
     }
     public void main() throws Exception {
-    route.init();
+    route.init(false);
     while (true) {
         int choice = menu.choices("SSH/TERMINAL EMULATOR", 
             new String[]{ "CAT","MV","RM","LS","cd","request","back"});
@@ -88,12 +88,14 @@ public class Terminal {
         TUI.clear();
         TUI.print("CAT READER");
         TUI.print("--------------------------------");
-
-        try (BufferedReader reader = Files.newBufferedReader(file)) {
+        try {
+            BufferedReader reader = Files.newBufferedReader(file);
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
-            }
+            } 
+        } catch (Exception e) {
+            TUI.print("ERROR, YOU probably dont have authorization to read this file :/");
         }
         TUI.prompt("");
     }
@@ -107,11 +109,9 @@ public class Terminal {
             throw new FileNotFoundException("mv: source not found: " + src);
         }
 
-        // If dst is a directory, move into that directory (like mv behavior)
         if (Files.exists(dst) && Files.isDirectory(dst)) {
             dst = dst.resolve(src.getFileName());
         } else {
-            // If parent of dst doesn't exist, throw
             Path parent = dst.getParent();
             if (parent != null && !Files.exists(parent)) {
                 throw new IOException("mv: destination directory does not exist: " + parent);
@@ -133,7 +133,7 @@ public class Terminal {
         if (!Files.exists(target)) {
             throw new FileNotFoundException("rm: no such file or directory: " + target);
         }
-
+        if(TUI.prompt("are you sure?").toLowerCase().equals("y")){TUI.prompt("NOT DELETING:"+dir); return;} else {TUI.prompt("OK IG");}
         if (Files.isDirectory(target)) {
             try (Stream<Path> walk = Files.walk(target)) {
                 List<Path> toDelete = walk.sorted(Comparator.reverseOrder()).collect(Collectors.toList());

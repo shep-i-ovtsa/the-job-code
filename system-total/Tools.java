@@ -18,55 +18,16 @@ public class Tools {
     TUI menu = new TUI();
     
     Scanner scan; 
-    /**
+    /*
     #passwords have an @ 
     #ip/port have a semicolon
     #names come first and should have a open space to seperate eachother
      */
-    public void sniffer(String in) {
-        if (in == null) {
-            TUI.prompt("No target");
-            return;
-        }
-
-        File input = new File("globals/IPs.dat");
-        if (!input.exists()) {
-            TUI.prompt("globals not found ");
-            return;
-        }
-
-        // ensure output dir exists
-        File outputDir = new File("red.team.system");
-        if (!outputDir.exists()) {
-            outputDir.mkdirs();
-        }
-
-        try (Scanner s = new Scanner(input);
-             BufferedWriter writer = new BufferedWriter(new FileWriter("red.team.system/open.dat"))) {
-
-            boolean found = false;
-
-            while (s.hasNextLine()) {
-                String read = s.nextLine();
-
-                if (!found) {
-                    if (read.equals(in)) {
-                        found = true;
-                    }
-                } else {
-                    if (read.contains(";")) {
-                        writer.write(read);
-                        writer.newLine();
-                        TUI.prompt("saved: " + read);
-                    } else {
-                        // if line dosent contain a semicolon-> stop
-                        break;
-                    }
-                }
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void sniffer() throws Exception {
+        TUI.clear();
+        for(int i = 0; i<route.get_access_size();i++){
+            if(route.get_access(i).contains("closed")) continue;
+            System.out.println(route.get_access(i));
         }
     }
 
@@ -127,11 +88,12 @@ public class Tools {
 
     router route = new router();
 
-    public void main() throws InterruptedException, FileNotFoundException {
-        route.init();
+    public void main() throws Exception {
+        route.init(false);
         int choice = TUI.choices("TOOLS", new String[]{"sniff", "Brute_force", "back"});
         if (choice == 0) {
-            sniffer(TUI.prompt("ENTER TARGET NAME"));
+            sniffer();
+            TUI.prompt("");
         } else if (choice == 1) {
             String targetName = TUI.prompt("ENTER TARGET NAME");
             String lookup = route.get_pass(targetName);

@@ -1,0 +1,31 @@
+UNKOWN_user
+##USER
+195.255.255.1/20;
+@t0talliL3gal
+$$closed
+ 
+VALVE_DEV_TEAMS
+##ADMIN
+190.133.126.124/20;
+@w3r0le
+$$closed
+
+VALVE_SERVER
+##server
+87.133.126.100/20;
+@va1v3
+$$open
+
+ROUTE //the routers info
+##router
+87.133.126.0/20;
+@va1v3
+$$open
+//this is just for the respective systems to set their passwords. Plus it makes it easy to make changes. 
+
+//PERMS #########################
+
+//$ADMIN/14F6A5;
+//$EMPLOY/142GHs5;
+//$USER/U33R;
+//$enc //sha64 bit 16// byte[] ###34Fg5^gKf;\nDndj$;
